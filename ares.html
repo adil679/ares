@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ARES by MPR - Creator + User</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#05001a;color:#fff;min-height:100vh;background-image:radial-gradient(circle at 15% 20%,#7b00ff66,transparent 50%),radial-gradient(circle at 85% 25%,#00e5ff55,transparent 50%),linear-gradient(180deg,#0a0033,#05001a);padding-bottom:120px}
+.top{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;background:#000000d9;border:1px solid #7b00ff66;border-radius:14px;margin:10px;padding:12px 14px}
+.top b{color:#c99cff}.top .mid{color:#b18cff;font-weight:900;font-size:19px;letter-spacing:1px}
+.top .mid span{color:#ff5aff}.top button{background:none;border:none;color:#7fe8ff;font-size:14px;cursor:pointer}
+.page{display:none;padding:12px 14px}.page.active{display:block}
+h1{font-size:34px;color:#7fe8ff;letter-spacing:1px;margin:6px 0 12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ai{border-radius:14px;padding:14px 10px;cursor:pointer;border:2px solid #ffffff33}
+.ai b{font-size:22px;color:#111;display:block;line-height:1}.ai span{font-size:14px;color:#111}
+.about{background:#0a001a;border:1.5px solid #ffffff33;border-radius:12px;padding:10px;margin-top:8px;min-height:86px}
+.about b{font-size:14px}.about p{font-size:12.5px;line-height:1.6;opacity:.9}
+.smith{background:#ff7a1a}.smithB{border-color:#ff7a1a}.smithB b{color:#ff7a1a}
+.cj{background:#ff3ea5}.cjB{border-color:#ff3ea5}.cjB b{color:#ff3ea5}
+.rita{background:#ffc0dd}.ritaB{border-color:#ff9ec6}.ritaB b{color:#ff9ec6}
+.mirror{background:#00d0e8}.mirrorB{border-color:#00d0e8}.mirrorB b{color:#00d0e8}
+.gideon{background:#2ecc71}.gideonB{border-color:#2ecc71}.gideonB b{color:#2ecc71}
+.crown{background:#ffd93d}.crownB{border-color:#ffd93d}.crownB b{color:#ffd93d}
+.card{background:#0a0020cc;border:1px solid #7b00ff88;border-radius:14px;padding:14px;margin-bottom:10px}
+.card h3{color:#7fe8ff;margin-bottom:6px}.card p{font-size:13px;opacity:.85;line-height:1.5}
+input,textarea,select{width:100%;padding:12px;border-radius:10px;border:none;background:#222;color:#fff;margin:6px 0 10px}
+.btn{width:100%;padding:13px;border:none;border-radius:10px;background:#00e676;color:#000;font-weight:900;font-size:16px;cursor:pointer}
+.btn2{background:#00e676;color:#000}
+.stat{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px}
+.stat div{background:#0a0020;border-radius:12px;padding:12px;text-align:center}
+.stat b{font-size:24px}.stat .rev b{color:#00ff66}.stat .act b{color:#ff5aff}.stat .usr b{color:#4fc3ff}
+.row{display:flex;justify-content:space-between;align-items:center;background:#111126;border:1px solid #ffffff22;border-radius:10px;padding:10px 12px;margin-bottom:8px}
+.row button{background:none;border:1px solid #ffffff44;color:#fff;padding:6px 14px;border-radius:8px;cursor:pointer}
+.price label{display:flex;gap:10px;align-items:center;background:#111126;padding:11px;border-radius:10px;margin-bottom:8px;cursor:pointer}
+.price label b{margin-left:auto}
+.modal{display:none;position:fixed;inset:0;background:#000000cc;z-index:50;padding:16px;overflow:auto}
+.modal .box{background:#0a0020;border:1px solid #ff5aff;border-radius:14px;padding:16px;margin-top:40px}
+.del{background:#c62828!important;color:#fff!important;padding:8px 14px;border-radius:8px;border:none;font-size:13px;cursor:pointer}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#000000e6;border-top:1px solid #ff00ff66;display:flex;justify-content:space-around;padding:10px 0 18px;z-index:30}
+.nav button{background:none;border:none;color:#aaa;font-size:12px;cursor:pointer}.nav button.active{color:#ff5aff;font-weight:900}
+.logo{text-align:center;color:#b18cff;padding:10px;font-weight:900;letter-spacing:2px}
+</style></head>
+<body>
+
+<!-- TOP BAR - SAME FOR ALL PAGES - LOGO BETWEEN SHARE AND LOGOUT -->
+<div class="top"><b id="hello">👤 Hello User</b><div class="mid">✦<span>MPR</span></div><div><button onclick="shareApp()">↗ Share App</button> <button onclick="logout()">⎋ Logout</button></div></div>
+
+<!-- ============ USER HOME ============ -->
+<div id="home" class="page active">
+<h1>AI ASSISTANTS</h1>
+<div class="grid">
+<div><div class="ai smith" onclick="openAI('SMITH','Car Doctor','smith')">🚗<b>SMITH</b><span>Car Doctor</span></div><div class="about smithB"><b>About:</b><p>• Diagnose<br>• Maintenance<br>• Repair estimates</p></div></div>
+<div><div class="ai cj" onclick="openAI('CJ','DJ','cj')">🎧<b>CJ</b><span>DJ</span></div><div class="about cjB"><b>About:</b><p>• Playlists<br>• Mixes<br>• Music requests</p></div></div>
+<div><div class="ai rita" onclick="openAI('RITA','Babysitter','rita')">🍼<b>RITA</b><span>Babysitter</span></div><div class="about ritaB"><b>About:</b><p>• Child care<br>• Stories<br>• Routines</p></div></div>
+<div><div class="ai mirror" onclick="openAI('MIRROR','Designs','mirror')">🖊️<b>MIRROR</b><span>Designs</span></div><div class="about mirrorB"><b>About:</b><p>• Logos<br>• Posters<br>• Art</p></div></div>
+<div><div class="ai gideon" onclick="openAI('GIDEON','Home Manager','gideon')">🏠<b>GIDEON</b><span>Home Manager</span></div><div class="about gideonB"><b>About:</b><p>• Bills<br>• Shopping<br>• Schedule</p></div></div>
+<div><div class="ai crown" onclick="openAI('CROWN','Academics','crown')">🎓<b>CROWN</b><span>Academics</span></div><div class="about crownB"><b>About:</b><p>• Homework<br>• Exams<br>• Research</p></div></div>
+</div>
+</div>
+
+<!-- ============ AI DETAIL + PAYMENT INSIDE HOME ============ -->
+<div id="detail" class="page">
+<button onclick="show('home')" style="background:none;border:none;color:#7fe8ff">← Back</button>
+<h1 id="detailTitle">SMITH • Car Doctor</h1>
+<div class="card" id="detailCard"><h3 id="detailAboutTitle">ABOUT SMITH - Capabilities</h3><p id="detailAbout"></p></div>
+<div class="card"><h3>PURCHASE / PAYMENT OPTIONS</h3><div class="price" id="prices"></div>
+Phone Number<input id="phone" value="+254 712 345 678">
+<button class="btn" onclick="pay()">PAY WITH M-PESA</button><p id="payMsg" style="margin-top:8px;color:#00ff66"></p></div>
+</div>
+
+<!-- ============ COMMUNICATION ============ -->
+<div id="comm" class="page"><h1>Communication Portal</h1>
+<div class="card" onclick="alert('Opening AI Chats')"><h3>💬 Chat with AIs</h3><p>SMITH • CJ • RITA • MIRROR • GIDEON • CROWN</p></div>
+<div class="card"><h3>👥 Community Chat</h3><p>Group chat • 24 online • 12 new messages</p></div>
+<div class="card"><h3>📢 Announcements from Creator</h3><p>NEW: ARES v2.1 is live!</p></div>
+<div class="card"><h3>Recent Chat</h3><p><b>SMITH:</b> Your car diagnostics are complete! 🚗</p></div>
+</div>
+
+<!-- ============ SETTINGS ============ -->
+<div id="settings" class="page"><h1>Settings</h1>
+<div class="grid"><div class="card"><h3>👤 Profile</h3><p>Change avatar, username</p></div><div class="card"><h3>🔔 Notifications</h3><p>ON</p></div><div class="card"><h3>🌍 Language</h3><p>English, Kiswahili</p></div><div class="card"><h3>🔒 Privacy</h3><p>Change password</p></div><div class="card"><h3>🎨 Theme</h3><p>Dark, Light</p></div><div class="card"><h3>❓ Help</h3><p>FAQ, Contact</p></div></div>
+</div>
+
+<!-- ============ CREATOR FACE ============ -->
+<div id="creator" class="page">
+<h1>CREATOR FACE</h1>
+<div class="stat"><div class="usr">👥 Total Users<br><b>1284</b></div><div class="rev">💲 Total Revenue<br><b>145600 KES</b></div><div class="act">✦ Active AIs<br><b>6</b></div></div>
+<div class="card"><h3>Manage AIs</h3><div id="manageList"></div>
+<button class="btn" style="background:none;border:1.5px dashed #7fe8ff;color:#7fe8ff" onclick="openAdd()">+ Add New AI</button></div>
+</div>
+
+<!-- EDIT MODAL - DELETE INSIDE EDIT ONLY -->
+<div id="editModal" class="modal"><div class="box">
+<h2 id="editTitle">Edit AI — SMITH</h2>
+Edit AI name<input id="eName">
+Description<textarea id="eDesc"></textarea>
+Price<input id="ePrice" value="From 50 KES">
+Capabilities<textarea id="eCap"></textarea>
+<button class="btn" onclick="saveEdit()">Save Changes</button><br><br>
+<button class="del" onclick="deleteAI()">🗑 Delete This AI</button>
+<button onclick="closeEdit()" style="float:right;background:none;border:none;color:#fff">✕ Close</button>
+</div></div>
+
+<div class="logo">✦ MPR</div>
+<div class="nav">
+<button class="active" onclick="show('home',this)">🏠<br>Home</button>
+<button onclick="show('comm',this)">💬<br>Communication Portal</button>
+<button onclick="show('settings',this)">⚙️<br>Settings</button>
+<button onclick="showCreator(this)">✦<br>Creator</button>
+</div>
+
+<script>
+let AIs={
+SMITH:{role:'Car Doctor',about:'Diagnose car issues from sound and symptoms • Maintenance schedule and reminders • Repair cost estimates • Book service and find mechanics • Fuel and driving tips',cap:'Diagnose, Maintenance, Repair estimates, Book service, Fuel tips',desc:'Your personal AI mechanic. Diagnose car issues, maintenance tips, book service, and get repair advice instantly.'},
+CJ:{role:'DJ',about:'Make playlists • Mixes for party, gym, chill • Music requests • New songs discovery',cap:'Playlists, Mixes, Music requests',desc:'Your personal AI DJ. Playlists, mixes and music for every mood.'},
+RITA:{role:'Babysitter',about:'Child care tips • Bedtime stories • Routines • Feeding and safety guidance',cap:'Child care, Stories, Routines',desc:'Your caring AI babysitter. Stories, routines and child care help.'},
+MIRROR:{role:'Designs',about:'Logos • Posters • Flyers • Art and branding ideas',cap:'Logos, Posters, Art',desc:'Your AI designer. Logos, posters and creative art.'},
+GIDEON:{role:'Home Manager',about:'Bills • Shopping list • Home schedule • Reminders',cap:'Bills, Shopping, Schedule',desc:'Your home manager. Bills, shopping and home schedule.'},
+CROWN:{role:'Academics',about:'Homework help • Exam prep • Research • Study plans',cap:'Homework, Exams, Research',desc:'Your academic AI. Homework, exams and research.'}
+};
+let current='SMITH';
+let prices=[[ '1 Day',50],['3 Days',120],['1 Week',250],['1 Month',800],['6 Months',4000],['1 Year',7000],['Permanent',15000]];
+function show(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');document.getElementById('hello').innerText='👤 Hello User';window.scrollTo(0,0)}
+function showCreator(btn){show('creator',btn);document.getElementById('hello').innerText='👤 Hello Creator';renderManage()}
+function renderManage(){let h='';for(let k in AIs){h+=`<div class="row"><b>${k} - ${AIs[k].role}</b><button onclick="openEdit('${k}')">Edit</button></div>`}document.getElementById('manageList').innerHTML=h}
+function openAI(name,role,key){current=name;document.getElementById('detailTitle').innerText=name+' • '+role;document.getElementById('detailAboutTitle').innerText='ABOUT '+name+' - Capabilities';document.getElementById('detailAbout').innerText=AIs[name].about;let ph='';prices.forEach((p,i)=>{ph+=`<label><input type="radio" name="pr" ${i==3?'checked':''} value="${p[0]} - ${p[1]} KES"> ${p[0]} <b>${p[1]} KES</b></label>`});document.getElementById('prices').innerHTML=ph;document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('detail').classList.add('active');window.scrollTo(0,0)}
+function pay(){let sel=document.querySelector('input[name="pr"]:checked').value;let ph=document.getElementById('phone').value;document.getElementById('payMsg').innerText='M-PESA Prompt Sent to '+ph+' for '+current+' - '+sel+'! Check your phone to complete.';alert('M-PESA Prompt Sent! '+sel)}
+function openEdit(name){current=name;document.getElementById('editTitle').innerText='Edit AI — '+name;document.getElementById('eName').value=name;document.getElementById('eDesc').value=AIs[name].desc;document.getElementById('ePrice').value='From 50 KES';document.getElementById('eCap').value=AIs[name].cap;document.getElementById('editModal').style.display='block'}
+function closeEdit(){document.getElementById('editModal').style.display='none'}
+function saveEdit(){alert('Saved: '+document.getElementById('eName').value);closeEdit();renderManage()}
+function deleteAI(){if(confirm('Delete '+current+'? This is inside Edit only.')){delete AIs[current];alert(current+' Deleted');closeEdit();renderManage()}}
+function openAdd(){let n=prompt('New AI Name?');if(!n)return;let r=prompt('Role? e.g Chef');AIs[n.toUpperCase()]={role:r||'Assistant',about:'New AI capabilities - Edit to add',cap:'Edit to add',desc:'New AI'};renderManage();alert('New AI Added: '+n)}
+function shareApp(){if(navigator.share){navigator.share({title:'ARES by MPR',text:'Join ARES!',url:location.href})}else{prompt('Copy link to share:',location.href)}}
+function logout(){if(confirm('Logout?')){alert('Logged out');location.reload()}}
+renderManage();
+</script></body></html>
